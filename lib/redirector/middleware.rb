@@ -77,8 +77,12 @@ module Redirector
       end
 
       def redirect_response
-        [301, {'Location' => redirect_url_string},
+        [redirect_code, {'Location' => redirect_url_string},
           [%{You are being redirected <a href="#{redirect_url_string}">#{redirect_url_string}</a>}]]
+      end
+
+      def redirect_code
+        return matched_destination.try(:redirect_code) || 301
       end
 
       def destination_uri

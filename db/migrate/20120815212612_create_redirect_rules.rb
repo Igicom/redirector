@@ -5,6 +5,7 @@ class CreateRedirectRules < ActiveRecord::Migration[4.2]
       t.boolean :source_is_regex, :null => false, :default => false
       t.boolean :source_is_case_sensitive, :null => false, :default => false
       t.string :destination, :null => false
+      t.integer :redirect_code, :null => false, default: 301
       t.boolean :active, :default => false
       t.timestamps
     end
